@@ -21,10 +21,12 @@ public class PollService extends IntentService {
     private static final String TAG = "PollService";
 
     // 60 seconds
-    private static final long POLL_INTERVAL_MS = TimeUnit.MINUTES.toMillis(15);
+    private static final long POLL_INTERVAL_MS = TimeUnit.MINUTES.toMillis(1);
 
     public static final String ACTION_SHOW_NOTIFICATION =
             "ru.shamilprog.android.photogallery.SHOW_NOTIFICATION";
+    public static final String PERM_PRIVATE =
+            "ru.shamilprog.android.photogallery.PRIVATE";
 
     public static Intent newIntent(Context context) {
         return new Intent(context, PollService.class);
@@ -101,7 +103,7 @@ public class PollService extends IntentService {
                     NotificationManagerCompat.from(this);
             notificationManager.notify(0, notification);
 
-            sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION));
+            sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION), PERM_PRIVATE);
         }
 
         QueryPreferences.setLastResultId(this, resultId);
