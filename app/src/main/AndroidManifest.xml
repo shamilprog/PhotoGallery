@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.shamilprog.android.photogallery">
 
-    <permission android:name="ru.shamilprog.android.photogallery.PRIVATE"
+    <permission
+        android:name="ru.shamilprog.android.photogallery.PRIVATE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -29,6 +30,13 @@
         <receiver android:name=".StartupReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".NotificationReceiver"
+            android:exported="false">
+            <intent-filter android:priority="-999">
+                <action android:name="ru.shamilprog.android.photogallery.SHOW_NOTIFICATION" />
             </intent-filter>
         </receiver>
     </application>
