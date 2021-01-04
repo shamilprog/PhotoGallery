@@ -101,6 +101,8 @@ public class PollService extends IntentService {
                     .setContentIntent(pi)
                     .setAutoCancel(true)
                     .build();
+
+            showBackgroundNotification(0, notification);
         }
 
         QueryPreferences.setLastResultId(this, resultId);
